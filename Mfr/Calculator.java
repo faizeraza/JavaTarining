@@ -1,43 +1,14 @@
+package Mfr;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class Basic{
-	// First Question
-	void getMessage(){
-		System.out.println("Hello World");
-	}
-    // Second Question
-	void getWithScanner(String name){
-		System.out.println("Hello "+name);
-	}
-	// 3rd Question
-	void setWithArg(String name){
-		System.out.println("Hellow "+name);
-	}
-    // 4th Question
-	void setAndReplace(String message, String name){
-		System.out.println("Massage before replacement: "+name);
-		System.out.println(message.replace("<name>", name));
-	}
-    // 5th Question
-	void add(Scanner sc){
-		try {
-            System.out.print("First Operand ");
-            int num1 = sc.nextInt();
-            sc.nextLine();                                       
-            System.out.print("Second Operand: ");
-            int num2 = sc.nextInt();
-            sc.nextLine();
-            int sum = num1 + num2;
-            System.out.println("num1=" + num1 + " num2=" + num2 + " sum=" + sum);
-
-        } catch (Exception e) {
-            System.out.println("Error: Please enter valid whole numbers.");
-        }
-	}
-    // 6th Question
-	
-    // 7th Question
-	void calculate(Scanner sc){
+public class Calculator {
+    Scanner sc;
+    public Calculator(Scanner input) {
+        sc = input;
+    }
+    public void calculate(){
         try {
             System.out.print("First Operand ");
             float num1 = Float.parseFloat(sc.nextLine());
@@ -79,17 +50,14 @@ public class Basic{
                     return;
             }
 
-            System.out.println("num1=" + num1 + " num2=" + num2 + " " + operationName + "=" + result);
-
-        } catch (Exception e) {
+            System.out.println("num1="+num1+" num2="+num2+" "+operationName+"="+result);
+        } 
+        catch (Exception e) {
             System.out.println("Error: Please enter valid floating-point numbers.");
         } 
 	}
 
-    void sort(Scanner sc){
-        
-    }
-    int statLoop(Scanner sc){
+    public int statLoop(){
         Boolean flag = true; 
         int sum = 0;
         int max=Integer.MIN_VALUE,min=Integer.MAX_VALUE, count=0,mean = 0;
@@ -133,44 +101,52 @@ public class Basic{
         }
         return sum;
     }
-    public static void main(String args[]){
-		Scanner sc =  new Scanner(System.in);
-        Basic bs=  new Basic();
-        System.out.println("Enter Ouestion Number:");
-        String choice = sc.next();
-		sc.nextLine();
-        switch (choice) {
-            case "1":
-                bs.getMessage();
-                break;
-            case "2":
-                System.out.println("Enter Name :");
-                String name = sc.next();
-                bs.getWithScanner(name);
-                break;
-            case "5":
-                bs.add(sc);
-                break;
-            case "6":
-                bs.addFloat(sc);
-                break;
-            case "7":
-                bs.calculate(sc);
-            case "8":
-                System.out.println(" Result: "+bs.statLoop(sc));
-            default:
-                    if (args.length == 1){
-                        bs.setWithArg(args[0]);
-                    }
-                    else if (args.length == 2){
-                        bs.setAndReplace(args[0], args[1]);
-                    }
-                    else{
-                        System.out.println("Enter A valid Input");
-                    }
-                break;
-        }	
-		sc.close();
-	}
 
+    public ArrayList<Integer> sort(){
+        ArrayList<Integer> arr = new ArrayList<>();
+        try{
+            while (true) {
+                String input = sc.next();
+                sc.nextLine();
+                if (input.toLowerCase().equals("proceed")){
+                    Collections.sort(arr);
+                    return arr;
+                }
+                else{
+                    arr.add(Integer.parseInt(input));
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println("Enter A valid number :");
+        }
+        return arr;
+    }
+
+    public void countEvenOdd(){
+        ArrayList<Integer> arr = new ArrayList<>();
+        int countEven = 0,countOdd=0;
+        try{
+            while (true) {
+                String input = sc.next();
+                sc.nextLine();
+                if (input.toLowerCase().equals("proceed")){
+                    for (int ele: arr){
+                        if (ele%2==0){
+                            countEven++;
+                        }
+                        else{
+                            countOdd++;
+                        }
+                    }
+                    System.out.print("Number Of Even "+countEven+"Number of Odd :"+countOdd);              }
+                else{
+                    arr.add(Integer.parseInt(input));
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println("Enter A valid number :");
+        }
+    }
 }
