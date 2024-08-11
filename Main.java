@@ -45,6 +45,14 @@ public class Main {
                 Table table = new Table(sc);
                 table.printTable();
                 break;
+            case "12":
+                Matrix mat = new Matrix(sc);
+                mat.printMatrix();
+                break;
+            case "13":
+                DateManipulation dm = new DateManipulation();
+                dm.dateManipulator();
+                break;
             default:
                     SetWithArg swa = new SetWithArg();
                     if (args.length == 1){
