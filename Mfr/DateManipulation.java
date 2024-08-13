@@ -77,7 +77,7 @@ public class DateManipulation {
     }
 
     // https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalUnit.html#between-java.time.temporal.Temporal-java.time.temporal.Temporal-
-    
+
     public void dueInBetween(){
         String[] formatPatterns = {
             "dd MMM yyyy",      
@@ -128,11 +128,6 @@ public class DateManipulation {
         Period period = Period.between(startDateTime.toLocalDate(), endDateTime.toLocalDate());
         Duration duration = Duration.between(startDateTime.toLocalTime(), endDateTime.toLocalTime());
 
-        long totalMinutes = duration.toMinutes();
-        long hours = totalMinutes / 60;
-        long minutes = totalMinutes % 60;
-        hours %= 24;
-        System.out.println(hours);
         // Print the difference in a human-readable format
         System.out.printf("%d years %d months %d days %d hours %d minutes%n", period.getYears(), period.getMonths(), period.getDays(), duration.toHoursPart(), duration.toMinutesPart());
     }
