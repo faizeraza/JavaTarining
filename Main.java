@@ -10,9 +10,10 @@ public class Main {
 
         // Instance Creation of some classes is Done before switch case,
         // As some classes contains two or more methods so we can call same instance. 
+
         Add sum =new Add(sc);
         Calculator cal = new  Calculator(sc);
-
+        DateManipulation dm = new DateManipulation(sc);
 
         switch (choice) {
             case "1":
@@ -50,8 +51,13 @@ public class Main {
                 mat.printMatrix();
                 break;
             case "13":
-                DateManipulation dm = new DateManipulation();
                 dm.dateManipulator();
+                break;
+            case "14":
+                dm.getWithZone();
+                break;
+            case "15":
+                dm.dueInBetween();
                 break;
             default:
                     SetWithArg swa = new SetWithArg();
