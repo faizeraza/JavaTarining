@@ -59,6 +59,9 @@ public class Main {
             case "15":
                 dm.dueInBetween();
                 break;
+            case "16":
+                dm.countWeekEnds();
+                break;
             default:
                     SetWithArg swa = new SetWithArg();
                     if (args.length == 1){
