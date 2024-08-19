@@ -62,6 +62,8 @@ public class Main {
             case "16":
                 dm.countWeekEnds();
                 break;
+            // case "17":
+
             default:
                     SetWithArg swa = new SetWithArg();
                     if (args.length == 1){

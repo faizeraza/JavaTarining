@@ -13,6 +13,14 @@ import java.util.Scanner;
 
 public class DateManipulation {
     Scanner sc;
+    private String[] formatPatterns = {
+        "dd MMM yyyy",      
+        "MMM dd, yyyy",     
+        "yyyy-MM-dd",       
+        "yyyy-MM-dd'T'HH:mm:ss'Z'",
+        "EEEE, dd MMMM yyyy" ,
+        "yyyy-MM-dd HH:mm:ss"
+    };
     public DateManipulation(Scanner input) {
         this.sc = input;
     }
@@ -20,13 +28,7 @@ public class DateManipulation {
         
         ZonedDateTime utcNow = ZonedDateTime.now(ZoneOffset.UTC);
         ZonedDateTime isNow = utcNow.withZoneSameInstant(ZoneId.of("Asia/Kolkata"));
-        String[] formatPatterns = {
-            "dd MMM yyyy",      
-            "MMM dd, yyyy",     
-            "yyyy-MM-dd",       
-            "yyyy-MM-dd'T'HH:mm:ss'Z'",
-            "EEEE, dd MMMM yyyy" 
-        };
+        
 
         // instead of passing the String manualluy,
         // created an array passing the patter string and formatter object generation.
@@ -39,6 +41,7 @@ public class DateManipulation {
     }
 
     public void getWithZone(){
+
         // Extended The Same methode for Question 16
         // Taking Zone Name as Input From User
         
@@ -52,8 +55,8 @@ public class DateManipulation {
 
     }
 
-    private String detectDateTimeFormat(String dateTimeString, String[] DATE_TIME_FORMATS) {
-        for (String format : DATE_TIME_FORMATS) {
+    private String detectDateTimeFormat(String dateTimeString) {
+        for (String format : formatPatterns) {
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
                 if (format.contains("HH") || format.contains("mm") || format.contains("ss")) {
@@ -61,12 +64,14 @@ public class DateManipulation {
                 } else {
                     LocalDate.parse(dateTimeString, formatter);
                 }
-                return format; // Return the format if parsing is successful
+                return format; 
+                // Return the format if parsing is successful
             } catch (DateTimeParseException e) {
                 // Ignore the exception and try the next format
             }
         }
-        return null; // Return null if no format matches
+        return null; 
+        // Return null if no format matches
     }
 
     
@@ -80,28 +85,27 @@ public class DateManipulation {
     // https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalUnit.html#between-java.time.temporal.Temporal-java.time.temporal.Temporal-
 
     public void dueInBetween(){
-        String[] formatPatterns = {
-            "dd MMM yyyy",      
-            "MMM dd, yyyy",     
-            "yyyy-MM-dd",       
-            "yyyy-MM-dd'T'HH:mm:ss'Z'",
-            "EEEE, dd MMMM yyyy" ,
-            "yyyy-MM-dd HH:mm:ss"
-        };
+
+        // String[] formatPatterns = {
+        //     "dd MMM yyyy",      
+        //     "MMM dd, yyyy",     
+        //     "yyyy-MM-dd",       
+        //     "yyyy-MM-dd'T'HH:mm:ss'Z'",
+        //     "EEEE, dd MMMM yyyy" ,
+        //     "yyyy-MM-dd HH:mm:ss"
+        // };
 
         System.out.println("Enter Starting date : ");
-        String startDate = sc.next();
-        sc.nextLine();
+        String startDate = sc.nextLine();
         
         System.out.println("Enter Ending date : ");
-        String endDate = sc.next();
-        sc.nextLine();
+        String endDate = sc.nextLine();
 
         // String startDate= "2024-08-14 00:00:00";
         // String endDate = "2024-08-14 00:30:00";
 
-        String startDateFormat = detectDateTimeFormat(startDate, formatPatterns);
-        String endDateFormat = detectDateTimeFormat(endDate, formatPatterns);
+        String startDateFormat = detectDateTimeFormat(startDate);
+        String endDateFormat = detectDateTimeFormat(endDate);
 
         if (startDateFormat == null || endDateFormat == null) {
             System.out.println("Could not detect the date-time format of one or both inputs.");
@@ -112,6 +116,7 @@ public class DateManipulation {
         endDate = addDefaultTimeIfNeeded(endDate, endDateFormat);
 
         // Re-detect format after adding default time if needed
+
         if (!startDateFormat.contains("HH") && !startDateFormat.contains("mm") && !startDateFormat.contains("ss")) {
             startDateFormat = startDateFormat + " HH:mm:ss";
         }
@@ -120,6 +125,7 @@ public class DateManipulation {
         }
 
         // Parsing the dates
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(startDateFormat);
         LocalDateTime startDateTime = LocalDateTime.parse(startDate, formatter);
 
@@ -130,6 +136,7 @@ public class DateManipulation {
         Duration duration = Duration.between(startDateTime.toLocalTime(), endDateTime.toLocalTime());
 
         // Print the difference in a human-readable format
+
         System.out.printf("%d years %d months %d days %d hours %d minutes%n", period.getYears(), period.getMonths(), period.getDays(), duration.toHoursPart(), duration.toMinutesPart());
     }
 
@@ -158,7 +165,6 @@ public class DateManipulation {
                 count++;
             }
             day = day.plusDays(1);
-            // System.out.println(day);
         }
 
         System.out.printf("Number Of Week End Between %s and %s are %d %n",startDate,endDate,count);
