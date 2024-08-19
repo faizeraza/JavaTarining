@@ -58,13 +58,12 @@ public class Calculator {
 	}
 
     public int statLoop(){
-        Boolean flag = true; 
         int sum = 0;
         int max=Integer.MIN_VALUE,min=Integer.MAX_VALUE, count=0,mean = 0;
         try{
            
-            while(flag){
-                System.err.println("Enter Number to add or Type Proceed/Mean/Min/Max/Count:");
+            while(true){
+                System.err.println("Enter Number or Type Proceed/Mean/Min/Max/Count:");
                 String input = sc.nextLine();
                 if(input.toLowerCase().equals("proceed")){
                     System.out.print("Addition");

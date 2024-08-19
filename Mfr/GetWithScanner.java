@@ -8,7 +8,7 @@ public class GetWithScanner {
         name = sc.next();
         sc.nextLine();
     }
-    public void getWithScanner(){
-		    System.out.println("Hello "+name);
-	  }
+    public String getWithScanner(){
+		    return "Hello "+name;
+	}   
 }

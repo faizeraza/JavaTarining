@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import Mfr.*;
 public class Main {
     public static void main(String[] args) {
@@ -10,25 +9,27 @@ public class Main {
 
         // Instance Creation of some classes is Done before switch case,
         // As some classes contains two or more methods so we can call same instance. 
-
-        Add sum =new Add(sc);
+        
+        Addition addition = new Addition();
         Calculator cal = new  Calculator(sc);
         DateManipulation dm = new DateManipulation(sc);
 
         switch (choice) {
             case "1":
                 Hello Q1 = new Hello();
-                Q1.getMessage();
+                System.out.println(Q1.getMessage());
                 break;
             case "2":
                 GetWithScanner gc = new GetWithScanner(sc);
-                gc.getWithScanner();
+                System.out.println((gc.getWithScanner()));
                 break;
             case "5":
-                sum.add();
+                AddInt addInt =new AddInt(sc);
+                addition.add(addInt);
                 break;
             case "6":
-                sum.addFloat();
+                AddFloat addFloat = new AddFloat(sc);
+                addition.add(addFloat);
                 break;
             case "7":
                 cal.calculate();
@@ -60,6 +61,15 @@ public class Main {
                 dm.dueInBetween();
                 break;
             case "16":
+                if(dm.isInLeapYear())
+                    System.out.println("the Given date hase Leap Year");
+                else
+                    System.out.println("no Leap Year Found!! ");
+                break;
+            case "17":
+                System.out.println(dm.dateComparision());
+                break;
+            case "18":
                 dm.countWeekEnds();
                 break;
             default:
