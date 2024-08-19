@@ -60,10 +60,17 @@ public class Main {
                 dm.dueInBetween();
                 break;
             case "16":
+                if(dm.isInLeapYear())
+                    System.out.println("the Given date hase Leap Year");
+                else
+                    System.out.println("no Leap Year Found!! ");
+                break;
+            case "17":
+                System.out.println(dm.dateComparision());
+                break;
+            case "18":
                 dm.countWeekEnds();
                 break;
-            // case "17":
-
             default:
                     SetWithArg swa = new SetWithArg();
                     if (args.length == 1){
