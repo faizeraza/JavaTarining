@@ -21,7 +21,6 @@ public class AddInt implements InnerAdd{
             sc.nextLine();                            
             int sum = num1 + num2;
             System.out.println("num1=" + num1 + " num2=" + num2 + " sum=" + sum);
-
         } catch (Exception e) {
             System.out.println("Error: Please enter valid whole numbers. "+e);
         }

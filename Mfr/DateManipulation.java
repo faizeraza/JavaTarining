@@ -24,6 +24,7 @@ public class DateManipulation {
     public DateManipulation(Scanner input) {
         this.sc = input;
     }
+
     public void dateManipulator(){
         
         ZonedDateTime utcNow = ZonedDateTime.now(ZoneOffset.UTC);
@@ -77,7 +78,7 @@ public class DateManipulation {
         }
         return dateTimeString;
     }
-
+    
     // https://docs.oracle.com/javase/8/docs/api/java/time/temporal/TemporalUnit.html#between-java.time.temporal.Temporal-java.time.temporal.Temporal-
 
     public void dueInBetween(){
@@ -102,13 +103,6 @@ public class DateManipulation {
         startDate = addDefaultTimeIfNeeded(startDate, startDateFormat);
         endDate = addDefaultTimeIfNeeded(endDate, endDateFormat);
 
-        // Re-detect format after adding default time if needed
-        if (!startDateFormat.contains("HH") && !startDateFormat.contains("mm") && !startDateFormat.contains("ss")) {
-            startDateFormat = startDateFormat + " HH:mm:ss";
-        }
-        if (!endDateFormat.contains("HH") && !endDateFormat.contains("mm") && !endDateFormat.contains("ss")) {
-            endDateFormat = endDateFormat + " HH:mm:ss";
-        }
 
         // Parsing the dates
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(startDateFormat);
@@ -186,7 +180,6 @@ public class DateManipulation {
     }
 
     public String dateComparision(){
-        String message = "";
         System.out.println("Enter Starting date : ");
         String firstDate = sc.nextLine();
         
@@ -233,4 +226,6 @@ public class DateManipulation {
             return " "+ firstDateTime +" is later than "+ secondDate;
         }
     }
+
+    
 }
