@@ -1,5 +1,7 @@
 import java.util.Scanner;
-import Mfr.*;
+
+import assingments.*;
+import assingments.support.BasicDateOperations;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -7,12 +9,11 @@ public class Main {
         String choice = sc.next();
 		sc.nextLine();
 
-        // Instance Creation of some classes is Done before switch case,
-        // As some classes contains two or more methods so we can call same instance. 
-        
-        Addition addition = new Addition();
-        Calculator cal = new  Calculator(sc);
-        DateManipulation dm = new DateManipulation(sc);
+        // Instance Creation of support classes is Done before switch case,
+        // As they are general for several High level classes.
+        BasicDateOperations dateOps = new BasicDateOperations();
+        StatLoop statistics = new StatLoop(sc);
+
 
         switch (choice) {
             case "1":
@@ -21,56 +22,71 @@ public class Main {
                 break;
             case "2":
                 GetWithScanner gc = new GetWithScanner(sc);
-                System.out.println((gc.getWithScanner()));
+                System.out.println(gc.getWithScanner());
                 break;
             case "5":
                 AddInt addInt =new AddInt(sc);
-                addition.add(addInt);
+                addInt.add();
                 break;
             case "6":
                 AddFloat addFloat = new AddFloat(sc);
-                addition.add(addFloat);
+                addFloat.add();
                 break;
             case "7":
+                Calculator cal = new  Calculator(sc);
                 cal.calculate();
                 break;
-            case "8":
-                System.out.println(" Result: "+ cal.statLoop());
+            case "8" :
+                System.out.println(" Result: "+ statistics.statLoop());
                 break;
-            case "9":
-                System.out.println("sorted list: "+cal.sort());  
-                break;  
+            case "9" :
+                System.out.println(" Result: "+ statistics.statLoop());
+                break;
             case "10":
-                cal.countEvenOdd();     
-                break;
+                SortList sorter =new SortList(sc);
+                System.out.println("sorted list: "+sorter.sort());  
+                break;  
             case "11":
+                CountEvenOdd counter = new CountEvenOdd(sc);
+                counter.countEvenOdd();     
+                break;
+            case "12":
                 Table table = new Table(sc);
                 table.printTable();
                 break;
-            case "12":
+            case "13":
                 Matrix mat = new Matrix(sc);
                 mat.printMatrix();
                 break;
-            case "13":
+            case "14":
+                DateManipulation dm = new DateManipulation(sc);
                 dm.dateManipulator();
                 break;
-            case "14":
-                dm.getWithZone();
-                break;
             case "15":
-                dm.dueInBetween();
-                break;
+                IstTimezone istZone = new IstTimezone();
+                istZone.getWithISTzone();
             case "16":
-                if(dm.isInLeapYear())
+                WithZone zone = new WithZone(sc);
+                zone.getWithZone();
+                break;
+            case "17":
+                DueInBetween due = new DueInBetween(dateOps, sc);
+                due.dueInBetween();
+                break;
+            case "18":
+                LeapYearDetector leapYearDetector = new LeapYearDetector(sc, dateOps);
+                if(leapYearDetector.isInLeapYear())
                     System.out.println("the Given date hase Leap Year");
                 else
                     System.out.println("no Leap Year Found!! ");
                 break;
-            case "17":
-                System.out.println(dm.dateComparision());
+            case "19":
+                DateComparator comparator =  new DateComparator(sc, dateOps);
+                System.out.println(comparator.dateComparision());
                 break;
-            case "18":
-                dm.countWeekEnds();
+            case "20":
+                WeekendCounter weekendCounter = new WeekendCounter(sc);
+                weekendCounter.countWeekEnds();
                 break;
             default:
                     SetWithArg swa = new SetWithArg();
