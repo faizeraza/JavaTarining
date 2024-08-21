@@ -47,7 +47,7 @@ public class Main {
                 break;
             case "7":
                 Calculator cal = new  Calculator(sc);
-                cal.calculate();
+                System.out.println(cal.calculate());
                 break;
             case "8" :
                 System.out.println(" Result: "+ statistics.statLoop());

@@ -3,15 +3,15 @@ package assingments;
 import java.util.Scanner;
 
 public class StatLoop {
-    private int sum = 0;
-    private int max=Integer.MIN_VALUE,min=Integer.MAX_VALUE, count=0,mean = 0;
+    private Float sum = 0f;
+    private Float max=Float.MIN_VALUE,min=Float.MAX_VALUE, count=0f,mean = 0f;
     Scanner sc;
 
     public StatLoop(Scanner sc) {
         this.sc = sc;
     }
 
-    public int statLoop(){
+    public float statLoop(){
         try{
            
             while(true){
@@ -38,7 +38,7 @@ public class StatLoop {
                     return count;
                 }
                 else{
-                    int newNumber = Integer.parseInt(input);
+                    float newNumber = Float.parseFloat(input);
                     sum = sum + newNumber;
                     count ++;
                     max = Math.max(max, newNumber);

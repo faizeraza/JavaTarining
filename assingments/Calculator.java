@@ -8,15 +8,12 @@ public class Calculator {
     }
     public String calculate(){
         try {
-            System.out.print("First Operand ");
+            System.out.print("First Operand: ");
             float num1 = Float.parseFloat(sc.nextLine());
-            sc.nextLine();
             System.out.print("Second Operand ");
             float num2 = Float.parseFloat(sc.nextLine());
-            sc.nextLine();
             System.out.print("Enter operation to be performed (+, -, *, /): ");
             String operation = sc.nextLine().trim();
-            sc.nextLine();
             float result;
             String operationName;
 

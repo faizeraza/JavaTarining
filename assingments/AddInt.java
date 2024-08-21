@@ -11,7 +11,7 @@ public class AddInt{
 
     public String add(){
         try {    
-            System.out.print("First Operand ");
+            System.out.print("First Operand: ");
             int firstOperand = sc.nextInt();
             sc.nextLine();
             System.out.print("Second Operand: ");
