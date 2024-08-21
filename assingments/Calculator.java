@@ -6,7 +6,7 @@ public class Calculator {
     public Calculator(Scanner input) {
         sc = input;
     }
-    public void calculate(){
+    public String calculate(){
         try {
             System.out.print("First Operand ");
             float num1 = Float.parseFloat(sc.nextLine());
@@ -37,7 +37,7 @@ public class Calculator {
                     if (num2 == 0) {
                         System.out.println("Error: Division by zero is not allowed.");
                         sc.close();
-                        return;
+                        return null;
                     }
                     result = num1 / num2;
                     operationName = "Divide";
@@ -45,13 +45,13 @@ public class Calculator {
                 default:
                     System.out.println("Error: Invalid operator provided. Use +, -, *, or /.");
                     sc.close();
-                    return;
+                    return null;
             }
 
-            System.out.println("num1="+num1+" num2="+num2+" "+operationName+"="+result);
+            return "num1="+num1+" num2="+num2+" "+operationName+"="+result;
         } 
         catch (Exception e) {
-            System.out.println("Error: Please enter valid floating-point numbers.");
+            return "Error: Please enter valid floating-point numbers.";
         } 
 	}
 }

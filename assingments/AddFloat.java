@@ -9,7 +9,7 @@ public class AddFloat {
         sc = input;
     }
 
-    public void add() {
+    public String add() {
         try {
             System.out.print("First Operand ");
             Float firstOperand = sc.nextFloat();
@@ -18,10 +18,10 @@ public class AddFloat {
             Float secondOperand = sc.nextFloat();
             sc.nextLine();
             float sum = firstOperand + secondOperand;
-            System.out.println("First Operand="+firstOperand+" Second Operand="+secondOperand+" sum="+sum);
+            return "First Operand="+firstOperand+" Second Operand="+secondOperand+" sum="+sum;
 
         } catch (Exception e) {
-            System.out.println("Error:Please enter valid Float numbers. "+e);
+            return "Error:Please enter valid Float numbers. "+e;
         }         
     }
     

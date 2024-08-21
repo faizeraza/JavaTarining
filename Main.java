@@ -3,6 +3,11 @@ import java.util.Scanner;
 import assingments.*;
 import assingments.support.BasicDateOperations;
 public class Main {
+
+    // Main Methode this contains initialization of classes.
+    // The Classes have there own seperate module.
+    // Each module is dedicated to each question.
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Question Number:");
@@ -10,10 +15,18 @@ public class Main {
 		sc.nextLine();
 
         // Instance Creation of support classes is Done before switch case,
+        // Support classes are stored into sub-package named <support>
+        // these are the classes which contains general methods 
+        // Now we dont need to write the same redendant logics for each task
+        // Jst call the class and Boom we are good to go.
         // As they are general for several High level classes.
+
         BasicDateOperations dateOps = new BasicDateOperations();
         StatLoop statistics = new StatLoop(sc);
 
+
+        // Switch case has been used to fomate the questions 
+        // The Question Number will be asked 
 
         switch (choice) {
             case "1":
@@ -26,11 +39,11 @@ public class Main {
                 break;
             case "5":
                 AddInt addInt =new AddInt(sc);
-                addInt.add();
+                System.out.println(addInt.add());
                 break;
             case "6":
                 AddFloat addFloat = new AddFloat(sc);
-                addFloat.add();
+                System.out.println(addFloat.add());
                 break;
             case "7":
                 Calculator cal = new  Calculator(sc);
@@ -88,15 +101,15 @@ public class Main {
                 WeekendCounter weekendCounter = new WeekendCounter(sc);
                 weekendCounter.countWeekEnds();
                 break;
-            default:
+            default: //Question 3 and 4 has been kept Default as they already Got input from CLI at the time of running Main
                     SetWithArg swa = new SetWithArg();
-                    if (args.length == 1){
+                    if (args.length == 1){  //If Only One Argument passed 3rd Qn will execute
                         swa.setWithArg(args[0]);
                     }
-                    else if (args.length == 2){
+                    else if (args.length == 2){ // 2 arguments for 4th
                         swa.setAndReplace(args[0], args[1]);
                     }
-                    else{
+                    else{   // At last if user will not provide any / wrong input
                         System.out.println("Enter A valid Input");
                     }
                 break;
