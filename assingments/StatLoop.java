@@ -2,23 +2,19 @@ package assingments;
 
 import java.util.Scanner;
 
-public class StatLoop {
-    private Float sum = 0f;
+public class StatLoop extends SumLoop{
+    private Float add = 0f;
     private Float max=Float.MIN_VALUE,min=Float.MAX_VALUE, count=0f,mean = 0f;
-    Scanner sc;
-
     public StatLoop(Scanner sc) {
-        this.sc = sc;
+        super(sc);
     }
 
     public float statLoop(){
         try{
-           
             while(true){
                 System.err.println("Enter Number or Type Proceed/Mean/Min/Max/Count:");
                 String input = sc.nextLine();
-                if(input.toLowerCase().equals("proceed")){
-                    System.out.print("Addition");
+                if(input.toLowerCase().contains("proceed")){
                     return sum;
                 }
                 else if(input.toLowerCase().contains("min")){
@@ -39,17 +35,17 @@ public class StatLoop {
                 }
                 else{
                     float newNumber = Float.parseFloat(input);
-                    sum = sum + newNumber;
+                    add = sum(add, newNumber);
                     count ++;
                     max = Math.max(max, newNumber);
                     min = Math.min(min, newNumber);
-                    mean = sum/count;
+                    mean = add/count;
                 }
             }
         }
         catch(Exception e){
             System.out.println("Please Enter a valid number or Type Proceed: ");
         }
-        return sum;
+    return 0f;
     }
 }

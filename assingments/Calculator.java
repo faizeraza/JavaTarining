@@ -1,42 +1,38 @@
 package assingments;
 import java.util.Scanner;
 
-public class Calculator {
-    Scanner sc;
+public class Calculator extends AddFloat {
     public Calculator(Scanner input) {
-        sc = input;
+        super(input);
     }
+    
     public String calculate(){
         try {
-            System.out.print("First Operand: ");
-            float num1 = Float.parseFloat(sc.nextLine());
-            System.out.print("Second Operand ");
-            float num2 = Float.parseFloat(sc.nextLine());
-            System.out.print("Enter operation to be performed (+, -, *, /): ");
-            String operation = sc.nextLine().trim();
+            System.out.println("Enter operation to be performed (+, -, *, /): ");
+            String operation = sc.nextLine();
             float result;
             String operationName;
 
             switch (operation) {
                 case "+":
-                    result = num1 + num2;
+                    result = firstOperand + secondOperand;
                     operationName = "ADD";
                     break;
                 case "-":
-                    result = num1 - num2;
+                    result = firstOperand - secondOperand;
                     operationName = "Substract";
                     break;
                 case "*":
-                    result = num1 * num2;
+                    result = firstOperand * secondOperand;
                     operationName = "Multiply";
                     break;
                 case "/":
-                    if (num2 == 0) {
+                    if (secondOperand == 0) {
                         System.out.println("Error: Division by zero is not allowed.");
                         sc.close();
                         return null;
                     }
-                    result = num1 / num2;
+                    result = firstOperand / secondOperand;
                     operationName = "Divide";
                     break;
                 default:
@@ -45,10 +41,10 @@ public class Calculator {
                     return null;
             }
 
-            return "num1="+num1+" num2="+num2+" "+operationName+"="+result;
+            return "num1="+firstOperand+" num2="+secondOperand+" "+operationName+"="+result;
         } 
         catch (Exception e) {
-            return "Error: Please enter valid floating-point numbers.";
+            return "Error: Please enter valid floating-point numbers."+e;
         } 
 	}
 }

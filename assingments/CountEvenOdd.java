@@ -15,6 +15,7 @@ public class CountEvenOdd {
         int countEven = 0,countOdd=0;
         try{
             while (true) {
+                System.out.println("Enter Number Or Type Proceed: ");
                 String input = sc.next();
                 sc.nextLine();
                 if (input.toLowerCase().equals("proceed")){
@@ -26,7 +27,10 @@ public class CountEvenOdd {
                             countOdd++;
                         }
                     }
-                    System.out.print("Number Of Even "+countEven+"Number of Odd :"+countOdd);              }
+                    System.out.println("Number Of Even "+countEven+" Number of Odd : "+countOdd); 
+                    System.out.println(arr);
+                    return;
+                }
                 else{
                     arr.add(Integer.parseInt(input));
                 }

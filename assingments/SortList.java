@@ -16,6 +16,7 @@ public class SortList {
         
         try{
             while (true) {
+                System.out.println("Enter the element to add in the array: ");
                 String input = sc.next();
                 sc.nextLine();
                 if (input.toLowerCase().equals("proceed")){
